@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,7 +6,7 @@ typedef struct{
     int quantidade;
     float valor;
 } Ferramenta;
-    void ListarFerramentas(Ferramenta *ferramenta, int indicedovetorferramentaparainserirosdados){
+void ListarFerramentas(Ferramenta *ferramenta, int indicedovetorferramentaparainserirosdados){
         int i;
         int indice = indicedovetorferramentaparainserirosdados;
         for (i=0;i<indice; i++){
@@ -27,19 +26,14 @@ void InserirFerramentas(Ferramenta *ferramenta, int indicedovetorferramentaparai
         printf("Nome Ferramenta:\n");
         fflush(stdin);
         gets(ferramenta[indice].nome);
-        //fgets(ferramenta[indice].nome, 50, stdin);
         printf("Quantidade:\n");
         fflush(stdin);
         scanf("%d", &ferramenta[indice].quantidade);
         printf("Valor:\n");
         fflush(stdin);
         scanf("%f", &ferramenta[indice].valor);
-        //printf("Ferramenta : %s Inserida com Sucesso \tQuantidade: %d \tValor: %f",ferramenta[0].nome, ferramenta[0].quantidade, ferramenta[0].valor);
-        //printf("Ferramenta : %s Inserida com Sucesso \tQuantidade: %d \tValor: %f",ferramenta[1].nome, ferramenta[1].quantidade, ferramenta[1].valor);
         fflush(stdin);
-        //ListarFerramentas(&ferramenta,indice);
-
-    }
+}
 
 int Excluirferramentas(Ferramenta *ferramenta,  int *indicedovetorferramentaparainserirosdados){
         int indice = 101;
@@ -69,23 +63,12 @@ void EditarFerramenta(Ferramenta *ferramenta, int indiceparaeditar){
 }
 
 void main(){
-// Menu de opções
     int repetir = 0, op, i;
-//inserir ferramentas automaticamente
-
-
-
-//    printf("<1> Inserir Ferramentas\n");
-//    printf("<2> Listar Ferramentas\n");
-//    printf("<3> Excluir Ferramentas\n");
-//    printf("<4> Editar Ferramenta\n");
-//    printf("<5> Sair\n");
-///////////////////////////////////////////////////
     int indicedovetorferramentaparainserirosdados = 0;
 while (repetir != 5){
     Ferramenta ferramenta[100];
 //////////////////////////////////////
-
+//Menu de opções
 ///////////////////////////////////
 
     op = 0;
@@ -104,7 +87,6 @@ while (repetir != 5){
      if (op == 1){
         InserirFerramentas(&ferramenta, indicedovetorferramentaparainserirosdados);
         indicedovetorferramentaparainserirosdados++;
-        //printf("\n%d",indicedovetorferramentaparainserirosdados);
        }
 
      if (op == 2){
@@ -129,7 +111,7 @@ while (repetir != 5){
             EditarFerramenta(&ferramenta, indiceparaeditar);
      }
 
-     if (op == 5){ //sair do programa
+     if (op == 5){
         repetir = 5;
         printf("Dados sendo gravados \n");
      }
