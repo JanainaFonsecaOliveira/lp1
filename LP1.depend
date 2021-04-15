@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1617202147 source:e:\janaina lp1\main.c
+1618449987 source:e:\janaina lp1\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 

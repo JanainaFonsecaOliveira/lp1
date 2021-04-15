@@ -1,9 +1,7 @@
+
 #include <stdio.h>
 #include <stdlib.h>
-
-void main(){
-//define a estrutura ferramenta sem definir a quantidade
-
+#include <string.h>
 typedef struct{
     char nome[50];
     int quantidade;
@@ -23,8 +21,7 @@ typedef struct{
             printf("%f\n",ferramenta[i].valor);
         }
     }
-//definindo as funções
-    void InserirFerramentas(Ferramenta *ferramenta, int indicedovetorferramentaparainserirosdados){
+void InserirFerramentas(Ferramenta *ferramenta, int indicedovetorferramentaparainserirosdados){
         int indice = indicedovetorferramentaparainserirosdados;
         printf("Inserir Ferramentas\n");
         printf("Nome Ferramenta:\n");
@@ -44,10 +41,30 @@ typedef struct{
 
     }
 
-    void Excluirferramentas(Ferramenta ferramenta){}
+int Excluirferramentas(Ferramenta *ferramenta,  int *indicedovetorferramentaparainserirosdados){
+        int indice = 101;
+        int i;
+        int ultimoindice = &indicedovetorferramentaparainserirosdados;
+        printf("Qual ferramenta devo excluir? digite o id dela\n");
+        fflush(stdin);
+        scanf("%d", &indice);
+        for(i=indice;i<ultimoindice;i++){
+            strcpy(ferramenta[indice].nome, ferramenta[indice+1].nome);
+            ferramenta[indice].quantidade = ferramenta[indice+1].quantidade;
+            ferramenta[indice].valor = ferramenta[indice+1].valor;
+        }
+        *indicedovetorferramentaparainserirosdados = *indicedovetorferramentaparainserirosdados - 1;
+        return 1;
+    }
     void EditarFerramenta(Ferramenta ferramenta){}
+
+void main(){
 // Menu de opções
     int repetir = 0, op, i;
+//inserir ferramentas automaticamente
+
+
+
 //    printf("<1> Inserir Ferramentas\n");
 //    printf("<2> Listar Ferramentas\n");
 //    printf("<3> Excluir Ferramentas\n");
@@ -57,6 +74,10 @@ typedef struct{
     int indicedovetorferramentaparainserirosdados = 0;
 while (repetir != 5){
     Ferramenta ferramenta[100];
+//////////////////////////////////////
+
+///////////////////////////////////
+
     op = 0;
     while ((op<1) || (op>6)){ //opcoes para verificacao
       printf("\nA opcao deve esta entre 1 e 5.\n");
@@ -83,7 +104,10 @@ while (repetir != 5){
 
      if (op == 3){
             printf("Excluir Ferramentas\n");
-        //Excluirferramentas(Ferramenta ferramenta);
+            if (indicedovetorferramentaparainserirosdados > 0){
+                Excluirferramentas(&ferramenta,&indicedovetorferramentaparainserirosdados);
+            }
+            else  printf("\nNao existem dados para serem excluidos\n");
      }
 
      if (op == 4){
