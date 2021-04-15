@@ -56,7 +56,17 @@ int Excluirferramentas(Ferramenta *ferramenta,  int *indicedovetorferramentapara
         *indicedovetorferramentaparainserirosdados = *indicedovetorferramentaparainserirosdados - 1;
         return 1;
     }
-    void EditarFerramenta(Ferramenta ferramenta){}
+void EditarFerramenta(Ferramenta *ferramenta, int indiceparaeditar){
+        printf("Nome Ferramenta:\n");
+        fflush(stdin);
+        gets(ferramenta[indiceparaeditar].nome);
+        printf("Quantidade:\n");
+        fflush(stdin);
+        scanf("%d", &ferramenta[indiceparaeditar].quantidade);
+        printf("Valor:\n");
+        fflush(stdin);
+        scanf("%f", &ferramenta[indiceparaeditar].valor);
+}
 
 void main(){
 // Menu de opções
@@ -111,15 +121,17 @@ while (repetir != 5){
      }
 
      if (op == 4){
+            int indiceparaeditar;
             printf("Editar Ferramentas\n");
-        //EditarFerramenta(Ferramenta ferramenta);
+            printf("\nSelecione o indice para ser editado\n");
+            ListarFerramentas(&ferramenta,indicedovetorferramentaparainserirosdados);
+            scanf("%d",&indiceparaeditar);
+            EditarFerramenta(&ferramenta, indiceparaeditar);
      }
 
      if (op == 5){ //sair do programa
         repetir = 5;
         printf("Dados sendo gravados \n");
      }
-
-
  }
 }
